@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="hud_margin_start">16dp</dimen>
+    <dimen name="hud_margin_top">8dp</dimen>
+    <dimen name="title1_text_size">24sp</dimen>
+    <dimen name="title2_text_size">18sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
+    <dimen name="medium_text_size">14sp</dimen>
+    <dimen name="very_small_text_size">10sp</dimen>
+    <dimen name="button_width">200dp</dimen>
+    <dimen name="button_height">55dp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+    <dimen name="horizontal_margin">20dp</dimen>
+    <dimen name="bottom_margin">20dp</dimen>
+    <dimen name="title_margin_top">20dp</dimen>
+    <dimen name="cache_padding">6dp</dimen>
+    <dimen name="icon_button_size">48dp</dimen>
+    <dimen name="text_small">8sp</dimen>
+    <dimen name="text_medium">10sp</dimen>
+    <dimen name="text_large">12sp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+
+    <!-- GTA V style launcher -->
+    <dimen name="launcher_margin">16dp</dimen>
+    <dimen name="launcher_header_height">42dp</dimen>
+    <dimen name="launcher_nav_width">178dp</dimen>
+    <dimen name="launcher_tab_height">46dp</dimen>
+    <dimen name="launcher_tab_gap">4dp</dimen>
+    <dimen name="launcher_panel_gap">14dp</dimen>
+    <dimen name="launcher_panel_padding">16dp</dimen>
+    <dimen name="launcher_footer_height">32dp</dimen>
+    <dimen name="launcher_logo_size">27sp</dimen>
+    <dimen name="launcher_logo_sub_size">8sp</dimen>
+    <dimen name="launcher_heading_size">23sp</dimen>
+    <dimen name="launcher_hero_size">31sp</dimen>
+    <dimen name="launcher_label_size">9sp</dimen>
+    <dimen name="launcher_body_size">12sp</dimen>
+    <dimen name="launcher_small_size">10sp</dimen>
+    <dimen name="launcher_row_text_size">14sp</dimen>
+    <dimen name="launcher_row_hint_size">10sp</dimen>
+    <dimen name="launcher_row_padding_h">13dp</dimen>
+    <dimen name="launcher_row_padding_v">9dp</dimen>
+    <dimen name="launcher_row_gap">6dp</dimen>
+</resources>

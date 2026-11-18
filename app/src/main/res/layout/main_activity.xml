@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/launcherRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gta_void">
+
+    <ImageView
+        android:id="@+id/launcherBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/download_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/launcher_scrim" />
+
+    <LinearLayout
+        android:id="@+id/launcherContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/launcher_margin">
+
+        <!-- Top bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/launcher_header_height"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="32dp"
+                android:background="@color/gta_accent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="0.12"
+                    android:text="@string/launcher_logo"
+                    android:textColor="@color/gta_text"
+                    android:textSize="@dimen/launcher_logo_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="0.3"
+                    android:text="@string/launcher_logo_sub"
+                    android:textColor="#B9C4A0"
+                    android:textSize="@dimen/launcher_logo_sub_size" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/launcher_badge_bg"
+                android:fontFamily="@font/montserrat_bold"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.1"
+                android:paddingStart="7dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="7dp"
+                android:paddingBottom="3dp"
+                android:text="@string/launcher_version_badge"
+                android:textColor="@color/gta_accent"
+                android:textSize="@dimen/launcher_small_size" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.2"
+                android:text="@string/launcher_build"
+                android:textColor="@color/gta_text_dim"
+                android:textSize="@dimen/launcher_label_size" />
+        </LinearLayout>
+
+        <!-- Navigation + content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="@dimen/launcher_nav_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.gta.launcher.ui.GtaTabView
+                    android:id="@+id/navPlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/launcher_tab_height"
+                    android:layout_marginBottom="@dimen/launcher_tab_gap"
+                    android:text="@string/nav_play" />
+
+                <com.gta.launcher.ui.GtaTabView
+                    android:id="@+id/navSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/launcher_tab_height"
+                    android:layout_marginBottom="@dimen/launcher_tab_gap"
+                    android:text="@string/nav_settings" />
+
+                <com.gta.launcher.ui.GtaTabView
+                    android:id="@+id/navAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/launcher_tab_height"
+                    android:layout_marginBottom="@dimen/launcher_tab_gap"
+                    android:text="@string/nav_about" />
+
+                <Space
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.gta.launcher.ui.GtaTabView
+                    android:id="@+id/navExit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/launcher_tab_height"
+                    android:text="@string/nav_exit" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/panelHost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/launcher_panel_gap"
+                android:layout_weight="1"
+                android:background="@drawable/launcher_panel_bg">
+
+                <!-- HOME -->
+                <ScrollView
+                    android:id="@+id/homePanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:fillViewport="true"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/launcher_panel_padding">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.35"
+                            android:text="@string/home_welcome"
+                            android:textColor="@color/gta_accent"
+                            android:textSize="@dimen/launcher_small_size" />
+
+                        <TextView
+                            android:id="@+id/homeNickname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_black"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.02"
+                            android:maxLines="1"
+                            android:text="__android_0000"
+                            android:textColor="@color/gta_text"
+                            android:textSize="@dimen/launcher_hero_size" />
+
+                        <TextView
+                            android:id="@+id/homeTagline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.25"
+                            android:text="@string/home_tagline"
+                            android:textColor="@color/gta_text_dim"
+                            android:textSize="@dimen/launcher_label_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:background="@color/gta_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.2"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/LauncherMetaLabel"
+                                    android:text="@string/home_label_server" />
+
+                                <TextView
+                                    android:id="@+id/homeServerValue"
+                                    style="@style/LauncherMetaValue"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="141.95.234.17:1417" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/LauncherMetaLabel"
+                                    android:text="@string/home_label_player" />
+
+                                <TextView
+                                    android:id="@+id/homePlayerValue"
+                                    style="@style/LauncherMetaValue"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="__android_0000" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.8"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/LauncherMetaLabel"
+                                    android:text="@string/home_label_client" />
+
+                                <TextView
+                                    android:id="@+id/homeClientValue"
+                                    style="@style/LauncherMetaValue"
+                                    android:text="0.3.7" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@color/gta_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.gta.launcher.ui.GtaButton
+                                android:id="@+id/startButton"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_weight="1.15"
+                                android:text="@string/home_launch" />
+
+                            <com.gta.launcher.ui.GtaButton
+                                android:id="@+id/btnHomeSettings"
+                                android:layout_width="0dp"
+                                android:layout_height="52dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_weight="1"
+                                android:text="@string/home_edit_settings"
+                                app:gtaButtonStyle="outline" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:id="@+id/homeCacheDot"
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:background="@drawable/launcher_dot" />
+
+                            <TextView
+                                android:id="@+id/homeCacheStatus"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:includeFontPadding="false"
+                                android:letterSpacing="0.16"
+                                android:text="@string/home_cache_ready"
+                                android:textColor="@color/gta_text_dim"
+                                android:textSize="@dimen/launcher_small_size" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/homeCacheHint"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/home_cache_hint"
+                            android:textColor="@color/gta_warn"
+                            android:textSize="@dimen/launcher_row_hint_size"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/home_note"
+                            android:textColor="@color/gta_text_faint"
+                            android:textSize="@dimen/launcher_label_size" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <!-- SETTINGS -->
+                <LinearLayout
+                    android:id="@+id/settingsPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/launcher_panel_padding"
+                        android:paddingTop="14dp"
+                        android:paddingEnd="@dimen/launcher_panel_padding"
+                        android:paddingBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:includeFontPadding="false"
+                                android:letterSpacing="0.1"
+                                android:text="@string/settings_title"
+                                android:textColor="@color/gta_text"
+                                android:textSize="@dimen/launcher_heading_size" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="1dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:maxLines="1"
+                                android:text="@string/settings_subtitle"
+                                android:textColor="@color/gta_text_dim"
+                                android:textSize="@dimen/launcher_label_size" />
+                        </LinearLayout>
+
+                        <com.gta.launcher.ui.GtaButton
+                            android:id="@+id/btnResetSettings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:text="@string/settings_reset"
+                            app:gtaButtonStyle="outline" />
+
+                        <com.gta.launcher.ui.GtaButton
+                            android:id="@+id/btnSaveSettings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/settings_save"
+                            app:gtaButtonStyle="accent" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gta_line" />
+
+                    <ScrollView
+                        android:id="@+id/settingsScroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:clipToPadding="false"
+                        android:fadingEdge="vertical"
+                        android:fadingEdgeLength="22dp"
+                        android:requiresFadingEdge="vertical"
+                        android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                        <LinearLayout
+                            android:id="@+id/settingsContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/launcher_panel_padding" />
+                    </ScrollView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gta_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/launcher_footer_height"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="14dp">
+
+                        <TextView
+                            android:id="@+id/settingsPath"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="middle"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:maxLines="1"
+                            android:text="@string/settings_path"
+                            android:textColor="@color/gta_text_faint"
+                            android:textSize="@dimen/launcher_label_size" />
+
+                        <TextView
+                            android:id="@+id/settingsState"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.15"
+                            android:text=""
+                            android:textColor="@color/gta_accent"
+                            android:textSize="@dimen/launcher_label_size" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ABOUT -->
+                <ScrollView
+                    android:id="@+id/aboutPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:fillViewport="true"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/launcher_panel_padding">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.1"
+                            android:text="@string/about_title"
+                            android:textColor="@color/gta_text"
+                            android:textSize="@dimen/launcher_heading_size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.14"
+                            android:text="@string/about_version"
+                            android:textColor="@color/gta_accent"
+                            android:textSize="@dimen/launcher_body_size" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineSpacingExtra="3dp"
+                            android:text="@string/about_body"
+                            android:textColor="@color/gta_text_dim"
+                            android:textSize="@dimen/launcher_body_size" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="14dp"
+                            android:background="@color/gta_line" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/LauncherMetaLabel"
+                                    android:text="@string/about_credits_label" />
+
+                                <TextView
+                                    style="@style/LauncherMetaValue"
+                                    android:text="@string/about_credits" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/LauncherMetaLabel"
+                                    android:text="@string/about_client_label" />
+
+                                <TextView
+                                    style="@style/LauncherMetaValue"
+                                    android:text="@string/about_client" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.22"
+                            android:text="@string/about_cache_label"
+                            android:textColor="@color/gta_text_dim"
+                            android:textSize="@dimen/launcher_label_size" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="/storage/emulated/0/GTA/"
+                            android:textColor="@color/gta_text"
+                            android:textSize="@dimen/launcher_body_size" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+
+                            <com.gta.launcher.ui.GtaButton
+                                android:id="@+id/btnTelegram"
+                                android:layout_width="wrap_content"
+                                android:layout_height="44dp"
+                                android:text="@string/about_telegram"
+                                app:gtaButtonStyle="outline" />
+
+                            <com.gta.launcher.ui.GtaButton
+                                android:id="@+id/btnReport"
+                                android:layout_width="wrap_content"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/about_report"
+                                app:gtaButtonStyle="outline" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/authorText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/authors"
+                            android:textColor="@color/gta_accent"
+                            android:textSize="@dimen/launcher_label_size" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/about_disclaimer"
+                            android:textColor="@color/gta_text_faint"
+                            android:textSize="@dimen/launcher_label_size" />
+                    </LinearLayout>
+                </ScrollView>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
