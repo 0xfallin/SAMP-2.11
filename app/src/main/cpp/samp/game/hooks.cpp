@@ -430,28 +430,52 @@ uint32_t CHudColours__GetIntColour(uintptr* thiz, uint8 colour_id)
 void (*AND_TouchEvent)(int type, int num, int posX, int posY);
 void AND_TouchEvent_hook(int type, int num, int posX, int posY)
 {
-    // imgui
-    //bool bRet = pUI->OnTouchEvent(type, num, posX, posY);
+    /* This build reports BOTH touch start and touch move as type 2:
+       Java_..._implOnTouchStart, _implOnTouchMove both call AND_TouchEvent(2, ...).
+       A type-2 event is therefore a push only for a pointer that is not down yet,
+       and a move for a pointer that is already down. */
+    static bool s_touchDown[4] = { false, false, false, false };
+    const bool validId = num >= 0 && num < 4;
+
+    TouchType uiType = TouchType::none;
+    switch (type)
+    {
+        case 1: // pop (Java_..._implOnTouchEnd)
+        case 4: // pop (engine side)
+            uiType = TouchType::pop;
+            if (validId) s_touchDown[num] = false;
+            break;
+
+        case 2: // push or move, disambiguated by the pointer state
+            uiType = (validId && s_touchDown[num]) ? TouchType::move : TouchType::push;
+            if (validId) s_touchDown[num] = true;
+            break;
+
+        case 3: // move, on builds that report it
+            uiType = TouchType::move;
+            break;
+
+        default:
+            break;
+    }
 
     if (pGame->IsGamePaused())
         return AND_TouchEvent(type, num, posX, posY);
 
     if (pUI != nullptr)
     {
-        switch (type)
+        if (uiType != TouchType::none)
         {
-            case 2: // push
-                pUI->touchEvent(ImVec2(posX, posY), TouchType::push);
-                break;
-
-            case 3: // move
-                pUI->touchEvent(ImVec2(posX, posY), TouchType::move);
-                break;
-
-            case 1: // pop
-                pUI->touchEvent(ImVec2(posX, posY), TouchType::pop);
-                break;
+            if (pUI->weaponwheel())
+                pUI->weaponwheel()->setTouchPointer(num);
+            pUI->touchEvent(ImVec2(posX, posY), uiType);
         }
+
+        /* the wheel/UI consumed the gesture from its first push, so the game
+           never saw this pointer go down: swallowing it is enough, do not
+           inject a pop for pointer 0 (that would end another finger's touch) */
+        if (pUI->weaponwheel() && pUI->weaponwheel()->consumedTouch())
+            return;
 
         if (pUI->keyboard()->visible() || pUI->dialog()->visible()) {
             AND_TouchEvent(1, 0, 0, 0);

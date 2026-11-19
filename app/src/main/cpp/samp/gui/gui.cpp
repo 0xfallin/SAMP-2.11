@@ -83,6 +83,13 @@ bool UI::initialize()
     m_playerTabList->setMaxSize(UISettings::dialogMaxSize());
     m_playerTabList->setVisible(false);
 
+    /* GTA V style weapon wheel (added last so it is drawn above the rest of the HUD) */
+    m_weaponWheel = new WeaponWheel();
+    this->addChild(m_weaponWheel);
+    m_weaponWheel->setFixedSize(UISettings::weaponWheelSize());
+    m_weaponWheel->setPosition(UISettings::weaponWheelPos());
+    m_weaponWheel->setVisible(false);
+
     label = new Label(" ", ImColor(1.0f, 1.0f, 1.0f), true, UISettings::fontSize() / 2);
     pUI->addChild(label);
 
@@ -144,6 +151,18 @@ void UI::drawList()
 
 void UI::touchEvent(const ImVec2& pos, TouchType type)
 {
+    /* the weapon wheel gets first pick; while it is open it swallows every touch
+       so the buttons below it (and the game) do not react to the drag */
+    if (m_weaponWheel)
+    {
+        m_weaponWheel->resetConsumed();
+        if (m_weaponWheel->visible())
+        {
+            m_weaponWheel->touchEvent(pos, type);
+            if (m_weaponWheel->consumedTouch()) return;
+        }
+    }
+
     if (m_keyboard->visible() && m_keyboard->contains(pos))
     {
         m_keyboard->touchEvent(pos, type);

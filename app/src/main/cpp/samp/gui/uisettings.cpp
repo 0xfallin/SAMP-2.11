@@ -62,6 +62,10 @@ ImVec2 UISettings::m_buttonPanelSize = ImVec2(380.0f/*250.0f*//*180.0f*//*250.0f
 ImVec2 UISettings::m_buttonVoicePos = ImVec2(500.0f, 180.0f/*170.0f*/);
 ImVec2 UISettings::m_buttonVoiceSize = ImVec2(55.0f, 80.0f);
 
+/* weapon wheel trigger (640x480 base coords, scaled in Initialize) */
+ImVec2 UISettings::m_weaponWheelPos = ImVec2(560.0f, 110.0f);
+ImVec2 UISettings::m_weaponWheelSize = ImVec2(52.0f, 52.0f);
+
 /* ////////////////// colors ////////////////// */
 
 /* button */
@@ -125,4 +129,8 @@ void UISettings::Initialize(const ImVec2& display_size)
 	/* button voice */
 	m_buttonVoicePos = m_buttonVoicePos * m_scaleFactor;
 	m_buttonVoiceSize = m_buttonVoiceSize * m_scaleFactor;
+
+	/* weapon wheel trigger */
+	m_weaponWheelPos = m_weaponWheelPos * m_scaleFactor;
+	m_weaponWheelSize = m_weaponWheelSize * m_scaleFactor;
 }

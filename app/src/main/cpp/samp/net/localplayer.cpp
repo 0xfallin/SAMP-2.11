@@ -216,6 +216,12 @@ bool CLocalPlayer::Process()
 		}
 		UpdateSurfing();
 		CheckWeapons();
+		{
+			/* weapon wheel request (UI thread -> game thread) */
+			int wheelWeapon = WeaponWheel::TakePendingWeapon();
+			if (wheelWeapon >= 0 && !m_pPlayerPed->IsInVehicle() && !m_pPlayerPed->IsDead())
+				m_pPlayerPed->SetArmedWeapon((uint8_t)wheelWeapon, false);
+		}
 		uint8_t byteInterior = pGame->GetActiveInterior();
 		if (byteInterior != m_byteCurInterior) {
 			UpdateRemoteInterior(byteInterior);

@@ -1,0 +1,592 @@
+{
+  "nodes": [
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_ios_hig_principles",
+      "label": "iOS Human Interface Guidelines Principles (Clarity, Deference, Depth)",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 23",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_swiftui_layout_system",
+      "label": "SwiftUI Layout System (Stack and Grid)",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 35",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_navigationstack",
+      "label": "NavigationStack Pattern",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 85",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_tabview",
+      "label": "TabView Pattern (iOS 18+)",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 107",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_sf_symbols",
+      "label": "SF Symbols Usage",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 133",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_dynamic_type",
+      "label": "Dynamic Type Support",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 152",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_semantic_colors",
+      "label": "Semantic Colors and Materials",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 169",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_skill_featurecard",
+      "label": "FeatureCard SwiftUI Component",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 207",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_typography_hierarchy",
+      "label": "HIG Typography Hierarchy",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 84",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_safe_area_handling",
+      "label": "Safe Area Handling with safeAreaInset",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 21",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_semantic_color_system",
+      "label": "Semantic Color System (Color extension)",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 129",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_adaptive_layout",
+      "label": "Adaptive Layout with horizontalSizeClass",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 50",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_haptic_feedback",
+      "label": "Haptic Feedback Wrapper",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 347",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_voiceover_support",
+      "label": "VoiceOver Accessibility Support",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 404",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_contentunavailableview_states",
+      "label": "ContentUnavailableView Error and Empty States",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 471",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_hig_patterns_navigation_split_view",
+      "label": "NavigationSplitView Master-Detail Pattern",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 179",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_navigationstack",
+      "label": "NavigationStack Basic and Programmatic Navigation",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_state_persistence",
+      "label": "Navigation State Persistence with SceneStorage",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 67",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_split_view",
+      "label": "NavigationSplitView Two and Three Column Layouts",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 105",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_sheet_presentation",
+      "label": "Sheet Presentation and Detents",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 182",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_tabview",
+      "label": "TabView with Badges (iOS 18+)",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 295",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_deep_linking_router",
+      "label": "Deep Linking NavigationRouter",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 357",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_coordinator",
+      "label": "NavigationCoordinator Pattern",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 428",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_ios_navigation_custom_navigation_transitions",
+      "label": "Custom Navigation Transitions and Hero Animation",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 494",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_list_view",
+      "label": "SwiftUI List and Sectioned List",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_settings_form",
+      "label": "Settings Form with AppStorage",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 88",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_validated_text_field",
+      "label": "ValidatedTextField Component",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 131",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_button_styles",
+      "label": "Button Styles and Custom ButtonStyle",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 176",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_sheet_modals",
+      "label": "Sheet Modals and Confirmation Dialog",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 233",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_loading_progress",
+      "label": "Loading Progress Indicators and Skeleton Loading",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 305",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_async_content_loading",
+      "label": "AsyncImage and Task-Based Content Loading",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 377",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_animations",
+      "label": "SwiftUI Animations and Transitions",
+      "file_type": "concept",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 448",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "_agents_skills_mobile_ios_design_references_swiftui_components_gestures",
+      "label": "SwiftUI Drag and Magnification Gestures",
+      "file_type": "code",
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 511",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_ios_hig_principles",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_navigation_split_view",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 10",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_dynamic_type",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_typography_hierarchy",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 152",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_semantic_colors",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_semantic_color_system",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 169",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_navigationstack",
+      "target": "_agents_skills_mobile_ios_design_references_ios_navigation_navigationstack",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 85",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_tabview",
+      "target": "_agents_skills_mobile_ios_design_references_ios_navigation_tabview",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 107",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_swiftui_layout_system",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_adaptive_layout",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 35",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_skill_featurecard",
+      "target": "_agents_skills_mobile_ios_design_skill_sf_symbols",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md",
+      "source_location": "line 214",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_hig_patterns_navigation_split_view",
+      "target": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_split_view",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 179",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_hig_patterns_safe_area_handling",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_contentunavailableview_states",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md",
+      "source_location": "line 21",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_coordinator",
+      "target": "_agents_skills_mobile_ios_design_references_ios_navigation_deep_linking_router",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 376",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_state_persistence",
+      "target": "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_coordinator",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 71",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_ios_navigation_sheet_presentation",
+      "target": "_agents_skills_mobile_ios_design_references_swiftui_components_sheet_modals",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 182",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_ios_navigation_custom_navigation_transitions",
+      "target": "_agents_skills_mobile_ios_design_references_swiftui_components_animations",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md",
+      "source_location": "line 494",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_swiftui_components_async_content_loading",
+      "target": "_agents_skills_mobile_ios_design_references_hig_patterns_contentunavailableview_states",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 414",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_swiftui_components_list_view",
+      "target": "_agents_skills_mobile_ios_design_references_swiftui_components_async_content_loading",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 426",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_swiftui_components_loading_progress",
+      "target": "_agents_skills_mobile_ios_design_references_swiftui_components_async_content_loading",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 379",
+      "weight": 1.0
+    },
+    {
+      "source": "_agents_skills_mobile_ios_design_references_swiftui_components_validated_text_field",
+      "target": "_agents_skills_mobile_ios_design_references_swiftui_components_settings_form",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md",
+      "source_location": "line 131",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "ios_navigation_patterns_group",
+      "label": "iOS Navigation Patterns",
+      "nodes": [
+        "_agents_skills_mobile_ios_design_references_ios_navigation_navigationstack",
+        "_agents_skills_mobile_ios_design_references_ios_navigation_navigation_split_view",
+        "_agents_skills_mobile_ios_design_references_ios_navigation_tabview",
+        "_agents_skills_mobile_ios_design_references_ios_navigation_sheet_presentation",
+        "_agents_skills_mobile_ios_design_references_ios_navigation_deep_linking_router"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md"
+    },
+    {
+      "id": "ios_accessibility_preferences_group",
+      "label": "iOS Accessibility and User Preferences",
+      "nodes": [
+        "_agents_skills_mobile_ios_design_references_hig_patterns_voiceover_support",
+        "_agents_skills_mobile_ios_design_skill_dynamic_type",
+        "_agents_skills_mobile_ios_design_references_hig_patterns_typography_hierarchy",
+        "_agents_skills_mobile_ios_design_references_hig_patterns_semantic_color_system"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md"
+    },
+    {
+      "id": "ios_content_state_feedback_group",
+      "label": "iOS Loading, Empty and Feedback States",
+      "nodes": [
+        "_agents_skills_mobile_ios_design_references_hig_patterns_contentunavailableview_states",
+        "_agents_skills_mobile_ios_design_references_swiftui_components_loading_progress",
+        "_agents_skills_mobile_ios_design_references_swiftui_components_async_content_loading",
+        "_agents_skills_mobile_ios_design_references_hig_patterns_haptic_feedback"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "coverage": {
+    "/root/SAMP2.11/.agents/skills/mobile-ios-design/SKILL.md": 259,
+    "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/hig-patterns.md": 529,
+    "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/ios-navigation.md": 556,
+    "/root/SAMP2.11/.agents/skills/mobile-ios-design/references/swiftui-components.md": 575
+  }
+}

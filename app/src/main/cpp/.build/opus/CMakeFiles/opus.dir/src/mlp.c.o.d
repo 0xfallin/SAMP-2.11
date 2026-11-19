@@ -1,0 +1,29 @@
+opus/CMakeFiles/opus.dir/src/mlp.c.o: \
+  /root/SAMP2.11/app/src/main/cpp/opus/src/mlp.c \
+  /root/SAMP2.11/app/src/main/cpp/.build/opus/config.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/math.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/sys/cdefs.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/android/versioning.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/android/api-level.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/bits/get_device_api_level_inlines.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/android/ndk-version.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/limits.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/limits.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/float.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/linux/limits.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/bits/posix_limits.h \
+  /root/SAMP2.11/app/src/main/cpp/opus/include/opus_types.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/stdint.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/stdint.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/bits/wchar_limits.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/stddef.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_header_macro.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_ptrdiff_t.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_size_t.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_wchar_t.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_null.h \
+  /root/android-sdk/ndk/29.0.14206865/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/21/include/__stddef_offsetof.h \
+  /root/SAMP2.11/app/src/main/cpp/opus/include/opus_defines.h \
+  /root/SAMP2.11/app/src/main/cpp/opus/celt/arch.h \
+  /root/SAMP2.11/app/src/main/cpp/opus/src/tansig_table.h \
+  /root/SAMP2.11/app/src/main/cpp/opus/src/mlp.h

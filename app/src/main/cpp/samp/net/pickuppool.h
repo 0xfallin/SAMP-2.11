@@ -34,13 +34,22 @@ public:
     void PickedUp(int dwGTAId);
 
 private:
+    enum class CreateResult
+    {
+        Created,
+        Waiting, // model still streaming, retried from Process()
+        Failed
+    };
+
     int GetIDFromGTAId(int dwGTAId);
+    CreateResult TryCreate(int iPickup);
+    void ClearSlot(int iPickup);
 
 private:
-    int				m_iPickupCount;
     uintptr_t		m_dwHnd[MAX_PICKUPS];
     int				m_dwGTAId[MAX_PICKUPS];
     int				m_iTimer[MAX_PICKUPS];
+    bool			m_bPending[MAX_PICKUPS];
     DROPPED_WEAPON	m_droppedWeapon[MAX_PICKUPS];
     PICKUP			m_Pickups[MAX_PICKUPS];
 };

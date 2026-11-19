@@ -24,6 +24,7 @@
 #include "samp_widgets/buttonpanel.h"
 #include "samp_widgets/playertablist.h"
 #include "samp_widgets/voicebutton.h"
+#include "samp_widgets/weaponwheel.h"
 
 #include "samp_widgets/dialogs/dialog.h"
 
@@ -55,6 +56,7 @@ public:
     ButtonPanel* buttonpanel() const { return m_buttonPanel; }
     PlayerTabList* playertablist() const { return m_playerTabList; }
     VoiceButton* voicebutton() const { return m_voiceButton; }
+    WeaponWheel* weaponwheel() const { return m_weaponWheel; }
 
     static const ImColor fixcolor(uint32_t color) {
         return ImColor(
@@ -96,6 +98,7 @@ private:
     ButtonPanel* m_buttonPanel;
     PlayerTabList* m_playerTabList;
     VoiceButton* m_voiceButton;
+    WeaponWheel* m_weaponWheel = nullptr;
     Label* label;
     Label* label2;
     Label* label3;

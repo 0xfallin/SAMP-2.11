@@ -21,6 +21,9 @@ public:
 		const ImColor& col_upr_left, const ImColor& col_upr_right,
 		const ImColor& col_bot_right, const ImColor& col_bot_left);
 	void drawTriangle(const ImVec2& a, const ImVec2& b, const ImVec2& c, const ImColor& color, bool fill = false, float thickness = 1.0f);
+	void drawCircle(const ImVec2& center, float radius, const ImColor& color, bool fill = true, float thickness = 1.0f, int segments = 48);
+	/* stroked arc, angles in radians (ImGui convention: 0 = +X, clockwise on screen). A thick stroke gives an annular sector. */
+	void drawArc(const ImVec2& center, float radius, float a_min, float a_max, const ImColor& color, float thickness = 1.0f, int segments = 16);
 	void drawConvexPolyFilled(ImVec2* points, int num_points	, const ImColor& color);
 	void drawText(const ImVec2& pos, const ImColor& color, const std::string& text, bool outlined = false, float font_size = 0.0f);
 	void drawImage(const ImVec2& a, const ImVec2& b, ImTextureID texture);

@@ -1,4 +1,5 @@
 #include "../main.h"
+#include <cmath>
 #include "game.h"
 #include "../vendor/armhook/patch.h"
 #include "Streaming.h"
@@ -359,17 +360,28 @@ void CGame::DrawGangZone(float fPos[], uint32_t dwColor, uint32_t dwUnk)
 // 0.3.7
 uint32_t CGame::CreatePickup(int iModel, int iType, float x, float y, float z, int *pdwIndex)
 {
-    uintptr hnd;
+    constexpr int kFallbackPickupModel = 18631; // question-mark pickup icon
+    constexpr int kLastPickupType = PICKUP_ONCE_FOR_MISSION;
 
-    auto dwModelArray = CModelInfo::ms_modelInfoPtrs;
-    if(dwModelArray[iModel] == nullptr)
-        iModel = 18631; // вопросик
+    if (iModel < 0 || iModel >= CModelInfo::NUM_MODEL_INFOS ||
+        CModelInfo::ms_modelInfoPtrs[iModel] == nullptr)
+        iModel = kFallbackPickupModel;
 
+    if (iModel < 0 || iModel >= CModelInfo::NUM_MODEL_INFOS ||
+        CModelInfo::ms_modelInfoPtrs[iModel] == nullptr)
+        return 0;
+
+    if (iType < 0 || iType > kLastPickupType)
+        return 0;
+
+    if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z))
+        return 0;
+
+    uintptr hnd = 0;
     ScriptCommand(&create_pickup, iModel, iType, x, y, z, &hnd);
 
-    int lol = 32 * (uint16_t)hnd;
-    if(lol) lol /= 32;
-    if(pdwIndex) *pdwIndex = lol;
+    if (pdwIndex)
+        *pdwIndex = static_cast<int>(static_cast<uint16_t>(hnd));
 
     return hnd;
 }

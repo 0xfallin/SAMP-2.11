@@ -1,21 +1,50 @@
 #include "../main.h"
+#include <cmath>
 #include "../game/game.h"
+#include "../game/Models/ModelInfo.h"
+#include "../game/Pickup.h"
 #include "netgame.h"
 #include "pickuppool.h"
 
 extern CGame *pGame;
 extern CNetGame *pNetGame;
 
+namespace
+{
+constexpr int kLastPickupType = PICKUP_ONCE_FOR_MISSION;
+constexpr int kFallbackPickupModel = 18631; // question-mark pickup icon
+
+bool IsValidPickup(const PICKUP& pickup)
+{
+    if (pickup.iType < 0 || pickup.iType > kLastPickupType)
+        return false;
+
+    return std::isfinite(pickup.fX) && std::isfinite(pickup.fY) && std::isfinite(pickup.fZ);
+}
+
+int ResolvePickupModel(int model)
+{
+    if (model >= 0 && model < CModelInfo::NUM_MODEL_INFOS &&
+        CModelInfo::ms_modelInfoPtrs[model] != nullptr)
+        return model;
+
+    if (CModelInfo::ms_modelInfoPtrs[kFallbackPickupModel] != nullptr)
+        return kFallbackPickupModel;
+
+    return -1;
+}
+}
+
 CPickupPool::CPickupPool()
 {
     memset(m_Pickups, 0, sizeof(m_Pickups));
-    m_iPickupCount = 0;
 
     for (int i = 0; i < MAX_PICKUPS; i++)
     {
         m_dwHnd[i] = 0;
         m_iTimer[i] = 0;
         m_dwGTAId[i] = 0xFFFFFFFF;
+        m_bPending[i] = false;
         memset(&m_droppedWeapon[i], 0, sizeof(DROPPED_WEAPON));
         memset(&m_Pickups[i], 0, sizeof(PICKUP));
     }
@@ -24,18 +53,16 @@ CPickupPool::CPickupPool()
 CPickupPool::~CPickupPool()
 {
     for (int i = 0; i < MAX_PICKUPS; i++)
-    {
-        if (m_dwHnd[i] != 0 && m_dwHnd[i] != 0xFFFFFFFF) {
-            ScriptCommand(&destroy_pickup, m_dwHnd[i]);
-            m_dwHnd[i] = 0;
-        }
-    }
+        ClearSlot(i);
 }
 
 void CPickupPool::Process()
 {
     for (int i = 0; i < MAX_PICKUPS; i++)
     {
+        if (m_bPending[i] && TryCreate(i) != CreateResult::Created)
+            continue;
+
         if (m_dwHnd[i] != 0 && m_dwHnd[i] != 0xFFFFFFFF)
         {
             int nResult = 0;
@@ -69,46 +96,74 @@ void CPickupPool::Process()
 void CPickupPool::New(PICKUP *pPickup, int iPickup)
 {
     if (!pPickup) return;
-    if (m_iPickupCount >= MAX_PICKUPS || iPickup < 0 || iPickup >= MAX_PICKUPS) return;
+    if (iPickup < 0 || iPickup >= MAX_PICKUPS) return;
+    if (!IsValidPickup(*pPickup)) return;
 
-    if (m_dwHnd[iPickup] != 0 && m_dwHnd[iPickup] != 0xFFFFFFFF) {
-        ScriptCommand(&destroy_pickup, m_dwHnd[iPickup]);
-        m_dwHnd[iPickup] = 0;
-    }
+    const int model = ResolvePickupModel(pPickup->iModel);
+    if (model < 0)
+        return;
+
+    ClearSlot(iPickup);
 
     memcpy(&m_Pickups[iPickup], pPickup, sizeof(PICKUP));
+    m_Pickups[iPickup].iModel = model;
     m_droppedWeapon[iPickup].bDroppedWeapon = false;
     m_droppedWeapon[iPickup].PlayerID = -1;
+    m_bPending[iPickup] = true;
 
-    int dwGTAId = -1;
-    uintptr_t hPickup = pGame->CreatePickup(pPickup->iModel, pPickup->iType,
-                                            pPickup->fX, pPickup->fY, pPickup->fZ, &dwGTAId);
-
-    if (hPickup == 0 || hPickup == 0xFFFFFFFF || dwGTAId == -1 || dwGTAId == 0xFFFFFFFF)
-    {
-        memset(&m_Pickups[iPickup], 0, sizeof(PICKUP));
-        return;
-    }
-
-    m_dwHnd[iPickup] = hPickup;
-    m_dwGTAId[iPickup] = dwGTAId;
-    m_iPickupCount++;
+    if (TryCreate(iPickup) == CreateResult::Failed)
+        ClearSlot(iPickup);
 }
 
 void CPickupPool::Destroy(int iPickup)
 {
-    if (m_iPickupCount <= 0 || iPickup < 0 || iPickup >= MAX_PICKUPS) return;
+    ClearSlot(iPickup);
+}
 
-    if (m_dwHnd[iPickup] != 0 && m_dwHnd[iPickup] != 0xFFFFFFFF)
+CPickupPool::CreateResult CPickupPool::TryCreate(int iPickup)
+{
+    if (!pGame)
+        return CreateResult::Failed;
+
+    PICKUP& pickup = m_Pickups[iPickup];
+    const int model = pickup.iModel;
+
+    if (!pGame->IsModelLoaded(model))
     {
-        ScriptCommand(&destroy_pickup, m_dwHnd[iPickup]);
-        m_dwHnd[iPickup] = 0;
-        m_iTimer[iPickup] = 0;
-        m_dwGTAId[iPickup] = 0xFFFFFFFF;
-        memset(&m_droppedWeapon[iPickup], 0, sizeof(DROPPED_WEAPON));
-        memset(&m_Pickups[iPickup], 0, sizeof(PICKUP));
-        if (m_iPickupCount > 0) m_iPickupCount--;
+        pGame->RequestModel(static_cast<uint16_t>(model));
+        pGame->LoadRequestedModels();
+
+        if (!pGame->IsModelLoaded(model))
+            return CreateResult::Waiting;
     }
+
+    int gtaId = -1;
+    const uintptr_t hnd = pGame->CreatePickup(model, pickup.iType,
+                                               pickup.fX, pickup.fY, pickup.fZ, &gtaId);
+
+    if (hnd == 0 || hnd == 0xFFFFFFFF || gtaId == -1 || gtaId == 0xFFFFFFFF)
+        return CreateResult::Failed;
+
+    m_dwHnd[iPickup] = hnd;
+    m_dwGTAId[iPickup] = gtaId;
+    m_bPending[iPickup] = false;
+    return CreateResult::Created;
+}
+
+void CPickupPool::ClearSlot(int iPickup)
+{
+    if (iPickup < 0 || iPickup >= MAX_PICKUPS) return;
+
+    const bool hasHandle = m_dwHnd[iPickup] != 0 && m_dwHnd[iPickup] != 0xFFFFFFFF;
+    if (hasHandle)
+        ScriptCommand(&destroy_pickup, m_dwHnd[iPickup]);
+
+    m_dwHnd[iPickup] = 0;
+    m_dwGTAId[iPickup] = 0xFFFFFFFF;
+    m_iTimer[iPickup] = 0;
+    m_bPending[iPickup] = false;
+    memset(&m_droppedWeapon[iPickup], 0, sizeof(DROPPED_WEAPON));
+    memset(&m_Pickups[iPickup], 0, sizeof(PICKUP));
 }
 
 int CPickupPool::GetIDFromGTAId(int dwGTAId)

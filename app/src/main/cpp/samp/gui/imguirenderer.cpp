@@ -36,6 +36,21 @@ void ImGuiRenderer::drawTriangle(const ImVec2& a, const ImVec2& b, const ImVec2&
 		m_drawList->AddTriangle(a, b, c, color, thickness);
 }
 
+void ImGuiRenderer::drawCircle(const ImVec2& center, float radius, const ImColor& color, bool fill, float thickness, int segments)
+{
+	if (fill)
+		m_drawList->AddCircleFilled(center, radius, color, segments);
+	else
+		m_drawList->AddCircle(center, radius, color, segments, thickness);
+}
+
+void ImGuiRenderer::drawArc(const ImVec2& center, float radius, float a_min, float a_max, const ImColor& color, float thickness, int segments)
+{
+	m_drawList->PathClear();
+	m_drawList->PathArcTo(center, radius, a_min, a_max, segments);
+	m_drawList->PathStroke(color, false, thickness);
+}
+
 void ImGuiRenderer::drawConvexPolyFilled(ImVec2* points, int num_points, const ImColor& color)
 {
 	m_drawList->AddConvexPolyFilled(points, num_points, color);

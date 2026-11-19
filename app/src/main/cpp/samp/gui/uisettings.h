@@ -53,6 +53,10 @@ public:
 	static ImVec2 buttonVoicePos() { return m_buttonVoicePos; }
 	static ImVec2 buttonVoiceSize() { return m_buttonVoiceSize; }
 
+	/* weapon wheel trigger */
+	static ImVec2 weaponWheelPos() { return m_weaponWheelPos; }
+	static ImVec2 weaponWheelSize() { return m_weaponWheelSize; }
+
 	/* ////////////////// colors ////////////////// */
 
 	/* button */
@@ -119,6 +123,10 @@ private:
 	/* voice button */
 	static ImVec2 m_buttonVoicePos;
 	static ImVec2 m_buttonVoiceSize;
+
+	/* weapon wheel trigger */
+	static ImVec2 m_weaponWheelPos;
+	static ImVec2 m_weaponWheelSize;
 
 	/* ////////////////// colors ////////////////// */
 
