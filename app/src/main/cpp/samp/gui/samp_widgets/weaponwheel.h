@@ -7,10 +7,11 @@ struct RwTexture;
 /*
  * GTA V style weapon wheel.
  *
- * - Small round trigger button on the HUD. HOLD it to open the wheel, then DRAG
- *   the finger around the centre like a joystick (the wheel centre is the stick
- *   origin; pointing up selects the top sector). RELEASE to equip. Releasing
- *   without leaving the centre = cancel.
+ * - Small round WPN trigger button on the HUD. HOLD it and DRAG away from the
+ *   button like a joystick (the button is the stick origin; the drag direction
+ *   selects the sector, up = top sector). RELEASE to equip. Releasing while
+ *   still on the button = cancel. The wheel interface itself stays drawn in the
+ *   centre of the screen.
  * - 8 sectors, clockwise from the top like GTA V:
  *   melee, handguns, SMGs, shotguns, assault rifles, snipers, heavy, thrown/misc.
  * - Each sector shows the weapon you would get: the equipped one if it belongs to

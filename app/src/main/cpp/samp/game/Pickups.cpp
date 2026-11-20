@@ -25,7 +25,8 @@ void CPickups::Update() {
             continue;
 
         if (pickup.m_nFlags.bVisible = pickup.IsVisible()) {
-            if (!pickup.m_nFlags.bDisabled && !pickup.m_pObject) {
+            if (!pickup.m_nFlags.bDisabled && !pickup.m_pObject &&
+                CPickup::EnsureModelHasCollision(pickup.m_nModelIndex)) {
                 pickup.GiveUsAPickUpObject(&pickup.m_pObject, -1);
 
                 if (auto& obj = pickup.m_pObject; obj) {

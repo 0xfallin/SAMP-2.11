@@ -76,6 +76,19 @@ public:
 
     void ExtractAmmoFromPickup(CPlayerPedGta* player);
     [[nodiscard]] bool IsVisible();
+
+    /*!
+     * @brief Makes sure the pickup model has a collision model.
+     *
+     * The game dereferences CBaseModelInfo::m_pColModel from CPhysical::Add
+     * (via CEntity::GetBoundCentre). Pickup models that have no collision
+     * (weapon models, SA-MP's NoModelFile/18631 fallback, ...) would crash
+     * there, so give them the engine's temp weapon collision model.
+     *
+     * @return false if the model info itself is missing.
+     */
+    static bool EnsureModelHasCollision(int32 modelIndex);
+
     void GetRidOfObjects();
     bool PickUpShouldBeInvisible();
     void Remove();

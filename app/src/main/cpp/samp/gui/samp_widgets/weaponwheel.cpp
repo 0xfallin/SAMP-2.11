@@ -272,21 +272,26 @@ void WeaponWheel::confirm()
 
 void WeaponWheel::updateHover(const ImVec2& pos)
 {
-	/* the wheel centre is the joystick origin: the direction from the centre
-	   to the finger picks the sector, so pointing up highlights the top one */
-	const Geometry g = geometryFor(this);
-	const float dx = pos.x - g.c.x;
-	const float dy = pos.y - g.c.y;
-	if (dx * dx + dy * dy < g.dead * g.dead)
+	/* the WPN trigger button is the joystick origin: dragging away from the
+	   button in a direction picks the sector pointing that way, while the
+	   wheel interface itself stays drawn in the centre of the screen */
+	ImVec2 p = absolutePosition();
+	ImVec2 s = size();
+	const float ox = p.x + s.x * 0.5f;
+	const float oy = p.y + s.y * 0.5f;
+	const float dead = std::min(s.x, s.y) * 0.5f + 8.0f; /* button radius + small buffer */
+	const float dx = pos.x - ox;
+	const float dy = pos.y - oy;
+	if (dx * dx + dy * dy < dead * dead)
 	{
-		m_hover = -1; /* back in the centre means cancel, like GTA V */
+		m_hover = -1; /* finger still on the button = cancel */
 		return;
 	}
 
 	float a = atan2f(dx, -dy);          /* 0 = up, clockwise */
 	if (a < 0.0f) a += 2.0f * kPi;
-	const int s = (int)((a + kPi / 8.0f) / (kPi / 4.0f)) % kGroups;
-	m_hover = s;
+	const int sct = (int)((a + kPi / 8.0f) / (kPi / 4.0f)) % kGroups;
+	m_hover = sct;
 }
 
 /* ------------------------------------------------------------------ touch */

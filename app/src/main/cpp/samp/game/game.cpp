@@ -371,6 +371,12 @@ uint32_t CGame::CreatePickup(int iModel, int iType, float x, float y, float z, i
         CModelInfo::ms_modelInfoPtrs[iModel] == nullptr)
         return 0;
 
+    // The game adds the pickup object to the world immediately if it is close
+    // to the camera (CPickups::GenerateNewOne -> CWorld::Add), so the model
+    // must have a collision model before create_pickup is executed.
+    if (!CPickup::EnsureModelHasCollision(iModel))
+        return 0;
+
     if (iType < 0 || iType > kLastPickupType)
         return 0;
 

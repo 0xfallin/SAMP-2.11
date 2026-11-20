@@ -7,8 +7,33 @@
 #include "../vendor/armhook/patch.h"
 #include "Camera.h"
 #include "game.h"
+#include "Models/ModelInfo.h"
 #include "net/netgame.h"
 
+// CTempColModels::ms_colModelWeapon from libGame.so. It is a shared, empty
+// collision model used by the game for weapon objects; it has a valid bound
+// sphere, so CEntity::GetBoundCentre can safely use it.
+static CColModel* GetWeaponTempColModel() {
+    return reinterpret_cast<CColModel*>(g_libGTASA + 0x9688E0);
+}
+
+bool CPickup::EnsureModelHasCollision(int32 modelIndex) {
+    if (modelIndex < 0 || modelIndex >= CModelInfo::NUM_MODEL_INFOS)
+        return false;
+
+    CBaseModelInfo* modelInfo = CModelInfo::ms_modelInfoPtrs[modelIndex];
+    if (!modelInfo)
+        return false;
+
+    if (!modelInfo->m_pColModel) {
+        // SetColModel(..., false) keeps the engine from owning/freeing the
+        // shared temp collision model.
+        CHook::CallFunction<void>(g_libGTASA + 0x53067C, modelInfo,
+                                  GetWeaponTempColModel(), false);
+    }
+
+    return modelInfo->m_pColModel != nullptr;
+}
 
 // Delete pickup's object (CObject)
 void CPickup::GetRidOfObjects() {
@@ -40,7 +65,12 @@ extern CNetGame *pNetGame;
 bool CPickup::Update() {
     if(!pNetGame || !pNetGame->GetPlayerPool())
         return false;
-    auto &ped = pNetGame->GetPlayerPool()->GetLocalPlayer()->GetPlayerPed()->m_pPed;
+
+    auto* localPlayer = pNetGame->GetPlayerPool()->GetLocalPlayer();
+    if (!localPlayer || !localPlayer->GetPlayerPed() || !localPlayer->GetPlayerPed()->m_pPed)
+        return false;
+
+    auto &ped = localPlayer->GetPlayerPed()->m_pPed;
 
     auto oldState = m_bIsPicked;
 
